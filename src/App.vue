@@ -1,25 +1,30 @@
 <script>
+import HeaderComponent from "./components/HeaderComponent.vue";
+import MainComponent from "./components/MainComponent.vue";
+import FooterComponent from "./components/FooterComponent.vue";
+
 export default {
   data() {
     return {
       message: "helo",
     };
   },
+  components: {
+    HeaderComponent,
+    MainComponent,
+    FooterComponent
+  },
 };
 </script>
 
 <template>
-    <header>header</header>
-    <main>
-        <h1>Titolo {{ message }}</h1>
-    </main>
-    <footer>
-        Footer
-    </footer>
+  <HeaderComponent />
+  <MainComponent />
+  <FooterComponent />
 </template>
 
 <style scoped>
-h1{
-    color: blueviolet;
+h1 {
+  color: blueviolet;
 }
 </style>

@@ -15,7 +15,7 @@ export default {
 </template>
 
 <style scoped>
-header {
-  color: aquamarine;
+footer {
+    color: blue;
 }
 </style>

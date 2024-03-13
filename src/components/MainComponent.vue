@@ -1,21 +1,34 @@
 <script>
+import axios from "axios";
 export default {
-  data() {
-    return {
-      message: "sono main",
-    };
-  },
+    data() {
+        return {
+        projects: [],
+        };
+    },
+    created() {
+        axios.get("http://127.0.0.1:8000/api/projects").then((res) => {
+        console.log(res.data);
+        this.projects = res.data.result.data;
+        });
+    },
 };
 </script>
 
 <template>
-  <main>
-    <h1>Titolo {{ message }}</h1>
-  </main>
+    <main>
+        <div>
+            <div v-for="project in projects" :key="projects.id">
+                <ul>
+                    {{ project.title }}
+                </ul>
+            </div>
+        </div>
+    </main>
 </template>
 
 <style scoped>
-header {
-  color: aquamarine;
+main {
+  color: red;
 }
 </style>
