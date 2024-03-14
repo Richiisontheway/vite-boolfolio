@@ -9,7 +9,7 @@ export default {
       lastPage: 1,
     };
   },
-  created() {
+  mounted() {
     this.getProjects(this.currentPage);
   },
   methods: {
@@ -28,15 +28,18 @@ export default {
         });
     },
     prevPage() {
-      if (this.current_page > 1) {
-        this.getProjects(this.currentPage - 1);
-      }
+        console.log(this.currentPage)
+        if (this.currentPage > 1) {
+            this.getProjects(this.currentPage - 1);
+        }
     },
     nextPage() {
-      if (this.current_page < this.lastPage) {
-        this.getProjects(this.currentPage + 1);
-      }
+        console.log(this.currentPage)
+        if (this.currentPage < this.lastPage) {
+            this.getProjects(this.currentPage + 1);
+        }
     },
+    
   },
   components: {
     ProjectCard,
@@ -45,24 +48,35 @@ export default {
 </script>
 
 <template>
-  <main>
-    <div class="container">
-      <ProjectCard
-        v-for="project in projects"
-        :key="projects.id"
-        :project="project"
-      />
-    </div>
-    <div class="nav_container">
-      <button @click="prevPage">Precedente</button>
-      <button @click="nextPage">Successivo</button>
-    </div>
-  </main>
+    <main>
+        <div class="container">
+            <ProjectCard
+                v-for="project in projects"
+                :key="projects.id"
+                :project="project"
+            />
+        </div>
+        <div class="nav_container">
+            <button @click="prevPage">Precedente</button>
+            <button @click="nextPage">Successivo</button>
+        </div>
+    </main>
 </template>
 
 <style scoped>
 .container {
   display: flex;
   justify-content: space-around;
+}
+.nav_container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+button{
+    background-color: blue;
+    border-radius: 20px;
+    padding: 5px;
+    color: white;
 }
 </style>
